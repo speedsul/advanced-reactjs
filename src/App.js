@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+const Twitter = () => {
+  const [tweet, setTweet] = useState(false)
+  // componentDidMount
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('teste')
+    }, 5000)
+  }, [])
+  // componentDidUpdate
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('tes 2')
+    }, 5000)
+  }, [tweet])
+  // componentUnmount
+  useEffect(() => {
+    return console.log('Componet WillUmmont')
+  }, [])
 
-function App() {
+  const postTweet = () => {
+    setTweet(!tweet)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className='home'>
+        <span>Home Tweet</span>
+        {tweet ? ' Sem postagem' : ' Com postagem'}
+        <button onClick={postTweet}>Teste</button>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default Twitter
